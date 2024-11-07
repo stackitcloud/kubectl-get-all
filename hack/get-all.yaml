@@ -5,10 +5,10 @@ metadata:
 spec:
   version: {{ .TagName }}
   platforms:
-  - {{ addURIAndSha "https://github.com/corneliusweig/ketall/releases/download/{{ .TagName }}/get-all-amd64-linux.tar.gz" .TagName }}
+  - {{ addURIAndSha "https://github.com/halkeye/ketall/releases/download/{{ .TagName }}/get-all-amd64-linux.tar.gz" .TagName }}
     bin: get-all-amd64-linux
     files:
-    - from: get-all-amd64-linux
+    - from: get-all
       to: .
     - from: LICENSE
       to: .
@@ -16,10 +16,21 @@ spec:
       matchLabels:
         os: linux
         arch: amd64
-  - {{ addURIAndSha "https://github.com/corneliusweig/ketall/releases/download/{{ .TagName }}/get-all-amd64-darwin.tar.gz" .TagName }}
+  - {{ addURIAndSha "https://github.com/halkeye/ketall/releases/download/{{ .TagName }}/get-all-arm64-linux.tar.gz" .TagName }}
+    bin: get-all-arm64-linux
+    files:
+    - from: get-all
+      to: .
+    - from: LICENSE
+      to: .
+    selector:
+      matchLabels:
+        os: linux
+        arch: arm64
+  - {{ addURIAndSha "https://github.com/halkeye/ketall/releases/download/{{ .TagName }}/get-all-amd64-darwin.tar.gz" .TagName }}
     bin: get-all-amd64-darwin
     files:
-    - from: get-all-amd64-darwin
+    - from: get-all
       to: .
     - from: LICENSE
       to: .
@@ -27,10 +38,10 @@ spec:
       matchLabels:
         os: darwin
         arch: amd64
-  - {{ addURIAndSha "https://github.com/corneliusweig/ketall/releases/download/{{ .TagName }}/get-all-arm64-darwin.tar.gz" .TagName }}
+  - {{ addURIAndSha "https://github.com/halkeye/ketall/releases/download/{{ .TagName }}/get-all-arm64-darwin.tar.gz" .TagName }}
     bin: get-all-arm64-darwin
     files:
-    - from: get-all-arm64-darwin
+    - from: get-all
       to: .
     - from: LICENSE
       to: .
@@ -38,10 +49,10 @@ spec:
       matchLabels:
         os: darwin
         arch: arm64
-  - {{ addURIAndSha "https://github.com/corneliusweig/ketall/releases/download/{{ .TagName }}/get-all-amd64-windows.zip" .TagName }}
+  - {{ addURIAndSha "https://github.com/halkeye/ketall/releases/download/{{ .TagName }}/get-all-amd64-windows.zip" .TagName }}
     bin: get-all-amd64-windows.exe
     files:
-    - from: get-all-amd64-windows.exe
+    - from: get-all.exe
       to: .
     - from: LICENSE
       to: .
@@ -50,7 +61,7 @@ spec:
         os: windows
         arch: amd64
   shortDescription: Like `kubectl get all` but _really_ everything
-  homepage: https://github.com/corneliusweig/ketall
+  homepage: https://github.com/halkeye/ketall
   description: |+2
 
       Like 'kubectl get all', but get _really_ all resources
@@ -60,4 +71,4 @@ spec:
       is not enough, because it simply does not show everything. This helper
       lists _really_ all resources on the cluster.
 
-      More on https://github.com/corneliusweig/ketall/blob/master/doc/USAGE.md
+      More on https://github.com/halkeye/ketall/blob/master/doc/USAGE.md
