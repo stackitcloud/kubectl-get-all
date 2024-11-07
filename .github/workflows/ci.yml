@@ -47,9 +47,6 @@ jobs:
         token: ${{ secrets.CODECOV_TOKEN }}
         files: ./out/coverage.txt
 
-    - name: Verify build
-      run: make dev
-
     - name: GoReleaser Build Snapshot
       if: "!contains(github.ref, 'tags')"
       uses: goreleaser/goreleaser-action@v6
