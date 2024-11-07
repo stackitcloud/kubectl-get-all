@@ -17,11 +17,13 @@ before:
     - go generate ./...
 
 builds:
-  - id: kubectl-kall
+  - id: get-all
     main: ./
     binary: get-all
     env:
       - CGO_ENABLED=0
+    ldflags:
+      - "-s -w -X github.com/corneliusweig/ketall/internal/version.Version={{.Version}}"
     goos:
       - linux
       - windows
@@ -32,7 +34,7 @@ builds:
 
 archives:
   - builds:
-      - kubectl-kall
+      - get-all
     format: tar.gz
     name_template: "{{ .ProjectName }}-{{ .Os }}-{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}"
     wrap_in_directory: false
