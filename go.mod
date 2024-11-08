@@ -1,5 +1,7 @@
 module github.com/corneliusweig/ketall
 
+replace github.com/imdario/mergo => github.com/imdario/mergo v0.3.16
+
 require (
 	github.com/blang/semver v3.5.1+incompatible
 	github.com/pkg/errors v0.9.1
