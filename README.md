@@ -78,7 +78,7 @@ curl -Lo get-all.gz https://github.com/stackitcloud/kubectl-get-all/releases/lat
 
 #### OSX
 ```bash
-curl -Lo get-all.gz https://github.com/stackitcloud/kubectl-get-all/releases/latest/download/get-all-macos-arm64.tar.gz && \
+curl -Lo get-all.gz https://github.com/stackitcloud/kubectl-get-all/releases/latest/download/get-all-darwin-arm64.tar.gz && \
   tar -xvf get-all.tar.gz && chmod +x get-all
 ```
 
