@@ -1,12 +1,7 @@
 <!-- DO NOT MOVE THIS FILE, BECAUSE IT NEEDS A PERMANENT ADDRESS -->
 
 # Usage
-![ketall demo](demo.gif "ketall demo")
-
-If you installed via [krew](https://github.com/kubernetes-sigs/krew) do
-```bash
-kubectl get-all
-```
+![get-all demo](demo.gif "get-all demo")
 
 ## Options
 
@@ -64,18 +59,17 @@ Get all resources...
 ```bash
 kubectl get-all help
 ```
-Note that in the help, the tool is referred to as `ketall`, which is the standard name when installed as stand-alone tool.
 
 ## Completion
 Completion does currently not work when used as a `kubectl` plugin. When used stand-alone, you can do
 ```bash
-source <(ketall completion bash) # for bash users
-source <(ketall completion zsh)  # for zsh users
+source <(get-all completion bash) # for bash users
+source <(get-all completion zsh)  # for zsh users
 ```
-Also see `ketall completion --help` for further instructions.
+Also see `get-all completion --help` for further instructions.
 
 ## Configuration
-The command will look for the configuration file `ketall` (no extension) in `.` or `$HOME/.kube/`, unless overridden by the `--config` option.
+The command will look for the configuration file `ketall` (no extension) in `.` or `$HOME/.kube/`, unless overridden by the `--config` option.  
 The following settings can be configured:
 ```yaml
 only-scope: cluster
@@ -88,24 +82,3 @@ exclude:
 - componentstatuses
 - cm   # configmaps
 ```
-
-## Installation
-
-### Via krew
-If you do not have `krew` installed, visit [https://github.com/kubernetes-sigs/krew](https://github.com/kubernetes-sigs/krew).
-```bash
-kubectl krew install get-all
-```
-
-### As `kubectl` plugin
-Most users will have installed `ketall` via [krew](https://github.com/kubernetes-sigs/krew),
-so the plugin is already correctly installed.
-Otherwise, rename `ketall` to `kubectl-get_all` and put it in some directory from your `$PATH` variable.
-Then you can invoke the plugin via `kubectl get-all`
-
-### Standalone
-Put the `ketall` binary in some directory from your `$PATH` variable. For example
-```bash
-sudo mv -i ketall /usr/bin/ketall
-```
-Then you can invoke the plugin via `ketall`

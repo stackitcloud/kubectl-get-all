@@ -1,6 +1,6 @@
 # kubectl-get-all
 [![Go Report Card](https://goreportcard.com/badge/stackitcloud/kubectl-get-all)](https://goreportcard.com/report/stackitcloud/kubectl-get-all)
-[![LICENSE](https://img.shields.io/github/license/stackitcloud/kubectl-get-all.svg)](https://github.com/stackitcloud/kubectl-get-all/blob/master/LICENSE)
+[![LICENSE](https://img.shields.io/github/license/stackitcloud/kubectl-get-all.svg)](https://github.com/stackitcloud/kubectl-get-all/blob/main/LICENSE)
 [![Releases](https://img.shields.io/github/release-pre/stackitcloud/kubectl-get-all.svg)](https://github.com/stackitcloud/kubectl-get-all/releases)
 
 Kubectl plugin to show **really** all kubernetes resources
@@ -58,7 +58,7 @@ Also see [Usage](docs/USAGE.md).
 ## Installation
 There are several ways to install `kubectl-get-all`. The recommended installation method is via `krew`.
 
-### Via krew
+### Via krew (not yet implemented!)
 Krew is a `kubectl` plugin manager. If you have not yet installed `krew`, get it at
 [https://github.com/kubernetes-sigs/krew](https://github.com/kubernetes-sigs/krew).
 Then installation is as simple as
@@ -72,30 +72,27 @@ When using the binaries for installation, also have a look at [docs/USAGE](docs/
 
 #### Linux
 ```bash
-curl -Lo ketall.gz https://github.com/stackitcloud/kubectl-get-all/releases/download/v1.3.8/ketall-amd64-linux.tar.gz && \
-  gunzip ketall.gz && chmod +x ketall && mv ketall $GOPATH/bin/
+curl -Lo get-all.gz https://github.com/stackitcloud/kubectl-get-all/releases/latest/download/get-all-linux-amd64.tar.gz && \
+  tar -xvf get-all.tar.gz && chmod +x get-all
 ```
 
 #### OSX
 ```bash
-curl -Lo ketall.gz https://github.com/stackitcloud/kubectl-get-all/releases/download/v1.3.8/ketall-amd64-darwin.tar.gz && \
-  gunzip ketall.gz && chmod +x ketall && mv ketall $GOPATH/bin/
+curl -Lo get-all.gz https://github.com/stackitcloud/kubectl-get-all/releases/latest/download/get-all-macos-arm64.tar.gz && \
+  tar -xvf get-all.tar.gz && chmod +x get-all
 ```
 
 #### Windows
-[https://github.com/stackitcloud/kubectl-get-all/releases/download/v1.3.8/ketall-amd64-windows.zip](https://github.com/stackitcloud/kubectl-get-all/releases/download/v1.3.8/ketall-amd64-windows.zip)
+<https://github.com/stackitcloud/kubectl-get-all/releases/latest/download/get-all-windows-amd64.zip>
 
 ### From source
 
 #### Build on host
 
 Requirements:
- - go 1.16 or newer
- - GNU make
+ - go
  - git
 
-Compiling:
 ```bash
-export PLATFORMS=$(go env GOOS)
-make all   # binaries will be placed in out/
+go build
 ```
