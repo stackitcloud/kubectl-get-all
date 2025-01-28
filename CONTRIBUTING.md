@@ -1,5 +1,5 @@
 # Contributing
-`ketall` uses GitHub to manage reviews of pull requests.
+`kubectl-get-all` uses GitHub to manage reviews of pull requests.
 
 * If you have a trivial fix or improvement, go ahead and create a pull request.
 
@@ -13,7 +13,9 @@
 
 ## Building & Testing
 
-* Build via `make dev` to create the binary file `./ketall`.
+<!-- TODO: replace with new commands -->
+
+* Build via `make dev` to create the binary file `./kubectl-get-all`.
 * Run unit tests with: `make test`
 * Run coverage with: `make coverage`
 
@@ -21,8 +23,8 @@
 
 * Use the [latest stable Go release](https://golang.org/dl/)
 
-* Branch from master and, if needed, rebase to the current master branch before submitting your pull request.
-  If it doesn't merge cleanly with master you will be asked to rebase your changes.
+* Branch from main and, if needed, rebase to the current main branch before submitting your pull request.
+  If it doesn't merge cleanly with main you will be asked to rebase your changes.
 
 * Commits should be small units of work with one topic. Each commit should be correct independently.
 
@@ -39,18 +41,17 @@
 
 1. `mkdir -p $HOME/go/src`
 2. `export GOPATH=$HOME/go`
-3. `go get -u github.com/corneliusweig/ketall`
+3. `go get -u github.com/stackitcloud/kubectl-get-all`
 4. Set `$GOROOT` depending on your OS and Go installation method:
    - MacOS, Go installed via brew: `export GOROOT=/usr/local/opt/go/libexec/`
 5. Now you should be able to build:
-   - `cd $GOPATH/src/github.com/corneliusweig/ketall/`
+   - `cd $GOPATH/src/github.com/stackitcloud/kubectl-get-all/`
    - `make dev`
 
 ## Releases
 
 This is a checklist for new releases:
 
-0. Create release notes in `doc/releases` with `hack/release_notes.sh`
 0. Update usage instructions, if applicable
 0. Create a new tag via `hack/make_tag.sh`
 0. Push the tag to GitHub `git push origin <TAG>`

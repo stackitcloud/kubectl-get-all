@@ -1,4 +1,6 @@
-module github.com/corneliusweig/ketall
+module github.com/stackitcloud/kubectl-get-all
+
+replace github.com/imdario/mergo v1.0.1 => dario.cat/mergo v1.0.1
 
 require (
 	github.com/blang/semver v3.5.1+incompatible
