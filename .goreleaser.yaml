@@ -33,7 +33,7 @@ archives:
   - builds:
       - get-all
     formats: [tar.gz]
-    name_template: "{{ .ProjectName }}-{{ .Os }}-{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}"
+    name_template: "{{ .ProjectName }}_{{ .Tag }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}"
     wrap_in_directory: false
     files:
       - LICENSE
