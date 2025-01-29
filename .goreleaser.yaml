@@ -21,7 +21,7 @@ builds:
     env:
       - CGO_ENABLED=0
     ldflags:
-      - "-s -w -X github.com/stackitcloud/kubectl-get-all/internal/version.Version={{.Version}}"
+      - "-s -w -X github.com/stackitcloud/kubectl-get-all/internal/version.Version={{.Tag}}"
     goos:
       - linux
       - windows
