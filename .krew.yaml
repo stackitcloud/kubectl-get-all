@@ -15,7 +15,7 @@ spec:
       lists _really_ all resources on the cluster.
 
       More on https://github.com/stackitcloud/kubectl-get-all/blob/main/doc/USAGE.md
-  platform:
+  platforms:
     - selector:
         matchLabels:
           os: linux
