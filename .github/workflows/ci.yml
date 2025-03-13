@@ -24,7 +24,7 @@ jobs:
       - name: Verify go.mod is sane
         run: go mod tidy && git diff --no-patch --exit-code
       - name: Golangci-lint
-        uses: golangci/golangci-lint-action@v6.5.0
+        uses: golangci/golangci-lint-action@v6.5.1
       - name: Run unit tests
         run: go test ./...
       - name: GoReleaser Build Snapshot
