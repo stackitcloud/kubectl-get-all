@@ -5,7 +5,6 @@
 # Feel free to remove those if you don't want/need to use them.
 # yaml-language-server: $schema=https://goreleaser.com/static/schema.json
 # vim: set ts=2 sw=2 tw=0 fo=cnqoj
-
 version: 2
 project_name: get-all
 before:
@@ -30,7 +29,7 @@ builds:
       - amd64
       - arm64
 archives:
-  - builds:
+  - ids:
       - get-all
     formats: [tar.gz]
     name_template: "{{ .ProjectName }}_{{ .Tag }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}"
