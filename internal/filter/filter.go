@@ -24,7 +24,7 @@ import (
 	"github.com/pkg/errors"
 	"github.com/spf13/viper"
 	"github.com/stackitcloud/kubectl-get-all/internal/constants"
-	"github.com/stackitcloud/kubectl-get-all/internal/util"
+	"github.com/stackitcloud/kubectl-get-all/internal/internalutil"
 	"k8s.io/apimachinery/pkg/api/meta"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/klog/v2"
@@ -88,7 +88,7 @@ func ByPredicates(o runtime.Object, ps ...Predicate) (runtime.Object, error) {
 		return nil, nil
 	}
 
-	return util.ToV1List(items), nil
+	return internalutil.ToV1List(items), nil
 }
 
 func AgePredicate(since string) (Predicate, error) {

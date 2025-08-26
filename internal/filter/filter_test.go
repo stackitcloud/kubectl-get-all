@@ -20,7 +20,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/stackitcloud/kubectl-get-all/internal/util"
+	"github.com/stackitcloud/kubectl-get-all/internal/internalutil"
 	"github.com/stretchr/testify/assert"
 	"k8s.io/apimachinery/pkg/api/meta"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -47,7 +47,7 @@ func TestFilterByPredicate(t *testing.T) {
 	}{
 		{
 			name: "two objects, one too old",
-			objects: util.ToV1List([]runtime.Object{
+			objects: internalutil.ToV1List([]runtime.Object{
 				newFakeObj("o1", now),
 				newFakeObj("o2", now.Add(-120*time.Second)),
 			}),
@@ -56,7 +56,7 @@ func TestFilterByPredicate(t *testing.T) {
 		},
 		{
 			name: "two objects, both too old",
-			objects: util.ToV1List([]runtime.Object{
+			objects: internalutil.ToV1List([]runtime.Object{
 				newFakeObj("o1", now.Add(-60*time.Second)),
 				newFakeObj("o2", now.Add(-120*time.Second)),
 			}),
@@ -64,7 +64,7 @@ func TestFilterByPredicate(t *testing.T) {
 		},
 		{
 			name: "two objects, both match",
-			objects: util.ToV1List([]runtime.Object{
+			objects: internalutil.ToV1List([]runtime.Object{
 				newFakeObj("o1", now.Add(-60*time.Second)),
 				newFakeObj("o2", now.Add(-120*time.Second)),
 			}),
@@ -73,7 +73,7 @@ func TestFilterByPredicate(t *testing.T) {
 		},
 		{
 			name: "two objects, without duration",
-			objects: util.ToV1List([]runtime.Object{
+			objects: internalutil.ToV1List([]runtime.Object{
 				newFakeObj("o1", now.Add(-60*time.Second)),
 				newFakeObj("o2", now.Add(-120*time.Second)),
 			}),
@@ -82,24 +82,24 @@ func TestFilterByPredicate(t *testing.T) {
 		},
 		{
 			name: "two objects and empty lists, without duration",
-			objects: util.ToV1List([]runtime.Object{
-				util.ToV1List([]runtime.Object{}),
+			objects: internalutil.ToV1List([]runtime.Object{
+				internalutil.ToV1List([]runtime.Object{}),
 				newFakeObj("o1", now.Add(-60*time.Second)),
-				util.ToV1List([]runtime.Object{}),
+				internalutil.ToV1List([]runtime.Object{}),
 				newFakeObj("o2", now.Add(-120*time.Second)),
-				util.ToV1List([]runtime.Object{}),
+				internalutil.ToV1List([]runtime.Object{}),
 			}),
 			givenMaxAge:   "",
 			expectedNames: []string{"o1", "o2"},
 		},
 		{
 			name: "two objects and empty lists, with duration",
-			objects: util.ToV1List([]runtime.Object{
-				util.ToV1List([]runtime.Object{}),
+			objects: internalutil.ToV1List([]runtime.Object{
+				internalutil.ToV1List([]runtime.Object{}),
 				newFakeObj("o1", now.Add(-60*time.Second)),
-				util.ToV1List([]runtime.Object{}),
+				internalutil.ToV1List([]runtime.Object{}),
 				newFakeObj("o2", now.Add(-120*time.Second)),
-				util.ToV1List([]runtime.Object{}),
+				internalutil.ToV1List([]runtime.Object{}),
 			}),
 			givenMaxAge:   "90s",
 			expectedNames: []string{"o1"},

@@ -37,7 +37,7 @@ import (
 	"k8s.io/klog/v2"
 
 	"github.com/stackitcloud/kubectl-get-all/internal/constants"
-	"github.com/stackitcloud/kubectl-get-all/internal/util"
+	"github.com/stackitcloud/kubectl-get-all/internal/internalutil"
 )
 
 var errEmpty = errors.New("no resources found")
@@ -117,8 +117,8 @@ func groupResources(cache bool, scope string, flags *genericclioptions.ConfigFla
 				continue
 			}
 
-			if !((r.Namespaced && scopeNamespace) || (!r.Namespaced && scopeCluster)) {
-				// The resource scope was disabled.
+			if (!r.Namespaced || !scopeNamespace) && (r.Namespaced || !scopeCluster) {
+				// The resource was excluded by the scope (either resource is namespaced but scope is "cluster" or resource is not namespaced but scope is "namespace")
 				continue
 			}
 
@@ -215,7 +215,7 @@ func fetchResourcesIncremental(ctx context.Context, flags resource.RESTClientGet
 		return nil, errEmpty
 	}
 
-	return util.ToV1List(ret), nil
+	return internalutil.ToV1List(ret), nil
 }
 
 func getResourceScope(scope string) (cluster, namespace bool, err error) {
