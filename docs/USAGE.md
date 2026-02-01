@@ -69,7 +69,7 @@ source <(get-all completion zsh)  # for zsh users
 Also see `get-all completion --help` for further instructions.
 
 ## Configuration
-The command will look for the configuration file `ketall` (no extension) in `.` or `$HOME/.kube/`, unless overridden by the `--config` option.  
+The command will look for the configuration file `ketall.yaml` in `.` or `$HOME/.kube/`, unless overridden by the `--config` option.  
 The following settings can be configured:
 ```yaml
 only-scope: cluster
