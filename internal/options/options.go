@@ -20,10 +20,11 @@ import (
 	"bytes"
 	"os"
 
-	"github.com/stackitcloud/kubectl-get-all/internal/printer"
 	"k8s.io/cli-runtime/pkg/genericclioptions"
 	"k8s.io/cli-runtime/pkg/printers"
 	"k8s.io/klog/v2"
+
+	"github.com/stackitcloud/kubectl-get-all/internal/customprinter"
 )
 
 type KetallOptions struct {
@@ -69,7 +70,7 @@ type KAPrintFlags struct {
 
 func (f *KAPrintFlags) ToPrinter() (printers.ResourcePrinter, error) {
 	if f.OutputFormat == nil || *f.OutputFormat == "" {
-		return &printer.TablePrinter{}, nil
+		return &customprinter.TablePrinter{}, nil
 	}
 	return f.PrintFlags.ToPrinter()
 }
