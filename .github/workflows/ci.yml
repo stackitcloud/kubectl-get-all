@@ -31,7 +31,7 @@ jobs:
         run: go test ./...
       - name: GoReleaser Build Snapshot
         if: "!contains(github.ref, 'tags')"
-        uses: goreleaser/goreleaser-action@v6
+        uses: goreleaser/goreleaser-action@v7
         with:
           version: "~> v2"
           args: release --snapshot --clean
@@ -39,7 +39,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: GoReleaser Release
         if: contains(github.ref, 'tags')
-        uses: goreleaser/goreleaser-action@v6
+        uses: goreleaser/goreleaser-action@v7
         with:
           version: "~> v2"
           args: release --clean
