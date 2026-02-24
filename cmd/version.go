@@ -22,7 +22,7 @@ import (
 	"github.com/spf13/cobra"
 	"k8s.io/klog/v2"
 
-	"github.com/stackitcloud/kubectl-get-all/internal/version"
+	"github.com/stackitcloud/kubectl-get-all/internal/appversion"
 )
 
 const (
@@ -61,7 +61,7 @@ func runVersion(cmd *cobra.Command, _ []string) {
 
 	var t = template.Must(template.New("info").Parse(tpl))
 
-	if err := t.Execute(ketallOptions.Streams.Out, version.GetBuildInfo()); err != nil {
+	if err := t.Execute(ketallOptions.Streams.Out, appversion.GetBuildInfo()); err != nil {
 		klog.Warning("Could not print version info")
 	}
 }

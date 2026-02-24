@@ -19,10 +19,11 @@ package options
 import (
 	"testing"
 
-	"github.com/stackitcloud/kubectl-get-all/internal/printer"
 	"github.com/stretchr/testify/assert"
 	"k8s.io/cli-runtime/pkg/genericclioptions"
 	"k8s.io/cli-runtime/pkg/printers"
+
+	custom_printer "github.com/stackitcloud/kubectl-get-all/internal/customprinter"
 )
 
 func TestKAPrintFlags_ToPrinter(t *testing.T) {
@@ -31,13 +32,13 @@ func TestKAPrintFlags_ToPrinter(t *testing.T) {
 	flags.OutputFormat = nil
 	p, err := flags.ToPrinter()
 	assert.NoError(t, err)
-	assert.IsType(t, &printer.TablePrinter{}, p)
+	assert.IsType(t, &custom_printer.TablePrinter{}, p)
 
 	format := ""
 	flags.OutputFormat = &format
 	p, err = flags.ToPrinter()
 	assert.NoError(t, err)
-	assert.IsType(t, &printer.TablePrinter{}, p)
+	assert.IsType(t, &custom_printer.TablePrinter{}, p)
 
 	format = "json"
 	flags.OutputFormat = &format

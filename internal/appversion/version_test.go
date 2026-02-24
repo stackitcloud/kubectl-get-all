@@ -14,14 +14,13 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package version
+package appversion
 
 import (
 	"testing"
 
-	"github.com/stretchr/testify/assert"
-
 	"github.com/blang/semver"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestParseVersion(t *testing.T) {

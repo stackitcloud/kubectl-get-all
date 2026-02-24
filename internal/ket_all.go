@@ -20,12 +20,13 @@ import (
 	"io"
 	"text/tabwriter"
 
-	"github.com/stackitcloud/kubectl-get-all/internal/client"
-	"github.com/stackitcloud/kubectl-get-all/internal/filter"
-	"github.com/stackitcloud/kubectl-get-all/internal/options"
-	"github.com/stackitcloud/kubectl-get-all/internal/printer"
 	"k8s.io/cli-runtime/pkg/printers"
 	"k8s.io/klog/v2"
+
+	"github.com/stackitcloud/kubectl-get-all/internal/client"
+	"github.com/stackitcloud/kubectl-get-all/internal/customprinter"
+	"github.com/stackitcloud/kubectl-get-all/internal/filter"
+	"github.com/stackitcloud/kubectl-get-all/internal/options"
 )
 
 func KetAll(ketallOptions *options.KetallOptions) {
@@ -51,11 +52,11 @@ func KetAll(ketallOptions *options.KetallOptions) {
 	switch pr := resourcePrinter.(type) {
 	// yaml and json printers should operate on the full tree structure with nested lists
 	case *printers.JSONPrinter:
-		p = printer.NewListAdapterPrinter(pr)
+		p = customprinter.NewListAdapterPrinter(pr)
 	case *printers.YAMLPrinter:
-		p = printer.NewListAdapterPrinter(pr)
+		p = customprinter.NewListAdapterPrinter(pr)
 	// other printers should flatten the resource list and operate on leaf items
-	case *printer.TablePrinter:
+	case *customprinter.TablePrinter:
 		klog.V(2).Info("Using tabwriter")
 		tw := tabwriter.NewWriter(out, 4, 4, 2, ' ', 0)
 		defer tw.Flush()
@@ -63,9 +64,9 @@ func KetAll(ketallOptions *options.KetallOptions) {
 		if err := pr.PrintHeader(out); err != nil {
 			klog.Fatal("print header", err)
 		}
-		p = printer.NewFlattenListAdapterPrinter(pr)
+		p = customprinter.NewFlattenListAdapterPrinter(pr)
 	default:
-		p = printer.NewFlattenListAdapterPrinter(pr)
+		p = customprinter.NewFlattenListAdapterPrinter(pr)
 	}
 
 	if err = p.PrintObj(filtered, out); err != nil {
