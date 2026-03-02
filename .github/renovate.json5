@@ -1,0 +1,32 @@
+{
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  extends: [
+    'config:recommended',
+    'github>stackitcloud/ske-ci-infra//config/renovate/ske.json5',
+  ],
+  additionalReviewers: [
+    'kumm-kai',
+    'dergeberl',
+  ],
+  packageRules: [
+    {
+      matchManagers: [
+        'gomod',
+      ],
+      matchUpdateTypes: [
+        'patch',
+        'digest',
+      ],
+      automerge: true,
+    },
+    {
+      groupName: 'kubernetes',
+      matchDatasources: [
+        'gomod',
+      ],
+      matchPackageNames: [
+        '/^k8s.io/',
+      ],
+    },
+  ],
+}
