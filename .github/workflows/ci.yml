@@ -27,6 +27,8 @@ jobs:
         run: go mod tidy && git diff --no-patch --exit-code
       - name: Golangci-lint
         uses: golangci/golangci-lint-action@v9.2.0
+        with:
+          version: v2.12.2
       - name: Run unit tests
         run: go test ./...
       - name: GoReleaser Build Snapshot
