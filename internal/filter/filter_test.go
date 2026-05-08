@@ -52,7 +52,7 @@ func TestFilterByPredicate(t *testing.T) {
 				newFakeObj("o2", now.Add(-120*time.Second)),
 			}),
 			givenMaxAge:   "119s",
-			expectedNames: []string{"o1"},
+			expectedNames: []string{"o1"}, // nolint: goconst // not relevant for a const
 		},
 		{
 			name: "two objects, both too old",
