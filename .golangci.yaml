@@ -13,6 +13,13 @@ linters:
     - unparam
   disable:
     - errcheck
+  settings:
+    goconst:
+      min-len: 2
+      min-occurrences: 5
+      ignore-string-values:
+        - 'true'
+        - 'false'
   exclusions:
     generated: lax
     presets:
