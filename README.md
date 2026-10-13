@@ -72,18 +72,30 @@ When using the binaries for installation, also have a look at [docs/USAGE](docs/
 
 #### Linux
 ```bash
-curl -Lo get-all.gz https://github.com/stackitcloud/kubectl-get-all/releases/latest/download/get-all-linux-amd64.tar.gz && \
-  tar -xvf get-all.tar.gz && chmod +x get-all
+# AMD64
+curl -Lo get-all.tar.gz $(curl -s https://api.github.com/repos/stackitcloud/kubectl-get-all/releases/latest | grep '"browser_download_url":' | grep 'linux' | grep 'amd64' | grep -o 'https://[^"]*') && tar -xvf get-all.tar.gz && chmod +x get-all
+
+# ARM64
+curl -Lo get-all.tar.gz $(curl -s https://api.github.com/repos/stackitcloud/kubectl-get-all/releases/latest | grep '"browser_download_url":' | grep 'linux' | grep 'arm64' | grep -o 'https://[^"]*') && tar -xvf get-all.tar.gz && chmod +x get-all
 ```
 
 #### OSX
 ```bash
-curl -Lo get-all.gz https://github.com/stackitcloud/kubectl-get-all/releases/latest/download/get-all-darwin-arm64.tar.gz && \
-  tar -xvf get-all.tar.gz && chmod +x get-all
+# AMD64
+curl -Lo get-all.tar.gz $(curl -s https://api.github.com/repos/stackitcloud/kubectl-get-all/releases/latest | grep '"browser_download_url":' | grep 'darwin' | grep 'amd64' | grep -o 'https://[^"]*') && tar -xvf get-all.tar.gz && chmod +x get-all
+
+# ARM64
+curl -Lo get-all.tar.gz $(curl -s https://api.github.com/repos/stackitcloud/kubectl-get-all/releases/latest | grep '"browser_download_url":' | grep 'darwin' | grep 'arm64' | grep -o 'https://[^"]*') && tar -xvf get-all.tar.gz && chmod +x get-all
 ```
 
 #### Windows
-<https://github.com/stackitcloud/kubectl-get-all/releases/latest/download/get-all-windows-amd64.zip>
+```bash
+# AMD64
+curl -Lo get-all.zip $(curl -s https://api.github.com/repos/stackitcloud/kubectl-get-all/releases/latest | grep '"browser_download_url":' | grep 'windows' | grep 'amd64' | grep -o 'https://[^"]*')
+
+# ARM64
+curl -Lo get-all.zip $(curl -s https://api.github.com/repos/stackitcloud/kubectl-get-all/releases/latest | grep '"browser_download_url":' | grep 'windows' | grep 'arm64' | grep -o 'https://[^"]*')
+```
 
 ### From source
 
