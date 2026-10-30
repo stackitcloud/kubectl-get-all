@@ -58,32 +58,19 @@ Also see [Usage](docs/USAGE.md).
 ## Installation
 There are several ways to install `kubectl-get-all`. The recommended installation method is via `krew`.
 
-### Via krew (not yet implemented!)
-Krew is a `kubectl` plugin manager. If you have not yet installed `krew`, get it at
-[https://github.com/kubernetes-sigs/krew](https://github.com/kubernetes-sigs/krew).
+### Via krew
+Krew is a `kubectl` plugin manager. If you have not yet installed `krew`, check out the [krew install guide.](https://krew.sigs.k8s.io/docs/user-guide/setup/install/)
+
 Then installation is as simple as
 ```bash
 kubectl krew install get-all
 ```
-The plugin will be available as `kubectl get-all`, see [Usage](docs/USAGE.md) for further details.
+The plugin will be available as `kubectl get-all`.
 
 ### Binaries
-When using the binaries for installation, also have a look at [docs/USAGE](docs/USAGE.md).
 
-#### Linux
-```bash
-curl -Lo get-all.gz https://github.com/stackitcloud/kubectl-get-all/releases/latest/download/get-all-linux-amd64.tar.gz && \
-  tar -xvf get-all.tar.gz && chmod +x get-all
-```
-
-#### OSX
-```bash
-curl -Lo get-all.gz https://github.com/stackitcloud/kubectl-get-all/releases/latest/download/get-all-darwin-arm64.tar.gz && \
-  tar -xvf get-all.tar.gz && chmod +x get-all
-```
-
-#### Windows
-<https://github.com/stackitcloud/kubectl-get-all/releases/latest/download/get-all-windows-amd64.zip>
+Download the desired version for your operating system and processor architecture from the [`kubectl-get-all` releases page](https://github.com/stackitcloud/kubectl-get-all/releases).
+Make the file executable and place it in a directory available in your `$PATH`.
 
 ### From source
 
